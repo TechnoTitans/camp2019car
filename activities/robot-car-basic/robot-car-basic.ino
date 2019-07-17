@@ -17,7 +17,7 @@ const int triggerPin = 13;
 const int echoPin = 12;
 
 void setup() {
-  SerialBT.begin(38400); //Bluetooth device name
+  SerialBT.begin(9600); //Bluetooth device name
   Serial.begin(115200);
   Serial.println("ready");
 
@@ -38,23 +38,23 @@ void loop() {
     d = SerialBT.read();
 
     // this part handles the controls
-    if (d == 'W') {
+    if (d == 'F') {
       fwd();
     }
-    else if (d == 'S') {
+    else if (d == 'B') {
       bwd();
     }
-    else if (d == 'A') {
+    else if (d == 'L') {
       left();
     }
-    else if (d == 'D') {
+    else if (d == 'R') {
       right();
     }
-    else if (d == 'R') {
+    else if (d == 'Q') {
       // remember, the arm is a servo
       armPos += [blank]; // how many degrees do you want the arm to move right by
     }
-    else if (d == 'L') {
+    else if (d == 'A') {
       armPos -= [blank]; // how many degrees do you want the arm to move left by
     }
     else if (d == 'Z') {
