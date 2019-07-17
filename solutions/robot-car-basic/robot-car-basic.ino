@@ -37,22 +37,22 @@ void loop() {
   if (SerialBT.available() > 0) {
     d = SerialBT.read();
 
-    if (d == 'W') {
+    if (d == 'F') {
       fwd();
     }
-    else if (d == 'S') {
+    else if (d == 'B') {
       bwd();
     }
-    else if (d == 'A') {
+    else if (d == 'L') {
       left();
     }
-    else if (d == 'D') {
+    else if (d == 'R') {
       right();
     }
-    else if (d == 'R') {
+    else if (d == 'Q') {
       armPos += 3;
     }
-    else if (d == 'L') {
+    else if (d == 'A') {
       armPos -= 3;
     }
     else if (d == 'Z') {
