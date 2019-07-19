@@ -1,1 +1,3 @@
-# camp2019car
+# Camp 2019 Car
+
+Solutions and activities
