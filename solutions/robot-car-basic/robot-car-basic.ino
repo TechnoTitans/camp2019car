@@ -17,7 +17,7 @@ const int triggerPin = 13;
 const int echoPin = 12;
 
 void setup() {
-  SerialBT.begin(38400);
+  SerialBT.begin(9600);
   Serial.begin(115200);
   Serial.println("ready");
 
@@ -133,11 +133,11 @@ void autonomous() {
     // Movement
     if(readDistance() < 100) {
       left();
-      delay(500); // CHANGE THIS VALUE. how many seconds should we turn?
+      checkDelay(500); // CHANGE THIS VALUE. how many seconds should we turn?
       stop();
     } else {
       fwd();
-      delay(500); // CHANGE THIS VALUE. how many seconds should we go forward?
+      checkDelay(500); // CHANGE THIS VALUE. how many seconds should we go forward?
       stop();
     }
 
@@ -150,4 +150,16 @@ void autonomous() {
 
   }
   Serial.println("Auto Finished");
+  mazeComplete = false;
+}
+
+// Use checkDelay instead of normal delay for all autonomous processes
+void checkDelay(int milliseconds) {
+  for (int i = 0; i < milliseconds / 10; i++) {
+    mazeComplete = SerialBT.read() == 'X';
+    delay(10);
+    if (mazeComplete) {
+      break;
+    }
+  }
 }
